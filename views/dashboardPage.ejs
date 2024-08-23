@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple To-do app</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="display-4 text-center py-1">To Do App</h1>
+
+      <div class="jumbotron p-3 shadow-sm">
+        <form action="/create-item" method="POST" id="create_form">
+          <div class="d-flex align-items-center">
+            <input
+              type="text"
+              autocomplete="off"
+              autofocus
+              name="todo"
+              style="flex: 1"
+              id="create_field"
+              class="form-control mr-3"
+            />
+            <button class="add_item btn btn-primary">Add New Item</button>
+          </div>
+        </form>
+      </div>
+      <ul class="list-group pb-5" id="item_list">
+
+      </ul>
+      <form action="/logout" method="POST">
+        <button>Logout</button>
+      </form>
+      <form action="/logout-out-from-all" method="POST">
+        <button>Logout all devices</button>
+      </form>
+    </div>
+  </body>
+</html>
