@@ -20,4 +20,4 @@ const userDataValidator = ({name, email, username, password}) => {
     })
 }
 
-module.exports = userDataValidator;
+module.exports = {userDataValidator, isEmailValid};
