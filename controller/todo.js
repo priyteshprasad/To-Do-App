@@ -29,10 +29,17 @@ const createTodo = async (req, res) =>{
           });
     }
 }
+// skip=5
 const getUsersTodo = async (req, res) => {
     const username = req.session.user.username;
+    const SKIP = Number(req.query.skip) || 0;
     try {
-        const todoList = await todoModel.find({username});
+        // const todoList = await todoModel.find({username});
+        const todoList = await todoModel.aggregate([
+            {$match: {username: username}},
+            {$skip: SKIP},
+            {$limit: 5}, //only 5 values will come at a time
+        ]);
         if(todoList.length === 0){
             return res.send({
                 status: 204, 

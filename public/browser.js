@@ -1,7 +1,7 @@
 window.onload = generateTodos; 
-
+let skip = 0
 function generateTodos(){
-    axios.get("/read-item")
+    axios.get(`/read-item?skip=${skip}`)
     .then((res)=>{
         if(res.data.status !== 200){
             alert(res.data.message);
@@ -9,6 +9,7 @@ function generateTodos(){
         }
         console.log(res.data.data);
         const todos = res.data.data
+        skip += todos.length; //after every fetch, the skip will be updated, and new fetch will have objects after previously fetched objects
         document.getElementById("item_list").insertAdjacentHTML(
             "beforeend",
             todos.map((item)=>{
@@ -86,6 +87,10 @@ document.addEventListener("click", function (event){
                 );
             })
             .catch((err)=> console.log(err));
+    }
+    // show morw
+    else if(event.target.classList.contains("show_more")){
+        generateTodos();
     }
     
 })
