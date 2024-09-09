@@ -16,7 +16,7 @@
       <h1 class="display-4 text-center py-1">To Do App</h1>
 
       <div class="jumbotron p-3 shadow-sm">
-        <form action="/create-item" method="POST" id="create_form">
+        <!-- <form action="/create-item" method="POST" id="create_form"> -->
           <div class="d-flex align-items-center">
             <input
               type="text"
@@ -29,10 +29,9 @@
             />
             <button class="add_item btn btn-primary">Add New Item</button>
           </div>
-        </form>
+        <!-- </form> -->
       </div>
       <ul class="list-group pb-5" id="item_list">
-
       </ul>
       <form action="/logout" method="POST">
         <button>Logout</button>
@@ -41,5 +40,10 @@
         <button>Logout all devices</button>
       </form>
     </div>
+
+    <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+    <!-- this is the script to import axios package without npm and using cdn -->
+    <script src="/browser.js"></script>
+    <!-- importing and running browser.js from public folder -->
   </body>
 </html>
