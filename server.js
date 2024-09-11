@@ -48,12 +48,18 @@ app.use(express.static("public"));
 // Above line is to avoid the error: Refused to execute script from 'http://localhost:8000/browser.js' because its MIME type ('text/html') is not executable, and strict MIME type checking is enabled.
 
 app.get("/", (req, res) => {
-  return res.send("Server is running...");
+  if(req.session.isAuth){
+    // user already logged in
+    return res.redirect("/dashboard")
+  }
+  return res.render("landing");
 });
-app.get("/test", (req, res) => {
-  return res.render("test.ejs");
-});
+
 app.get("/register", (req, res) => {
+  if(req.session.isAuth){
+    // user already logged in
+    return res.redirect("/dashboard")
+  }
   return res.render("registerPage");
 });
 
@@ -114,6 +120,10 @@ app.post("/register", async (req, res) => {
   }
 });
 app.get("/login", (req, res) => {
+  if(req.session.isAuth){
+    // user already logged in
+    return res.redirect("/dashboard")
+  }
   return res.render("loginPage");
 });
 app.post("/login", async (req, res) => {
